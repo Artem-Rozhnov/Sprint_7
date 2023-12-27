@@ -2,8 +2,9 @@ package org.example.courier;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import java.util.Map;
+import org.example.Client;
 
-public class CourierClient extends org.example.Client {
+public class CourierClient extends Client {
 
     public static final String COURIER_PATH = "/courier";
     @Step("Создание курьера")

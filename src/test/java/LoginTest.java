@@ -3,6 +3,7 @@ import io.restassured.response.ValidatableResponse;
 import org.example.courier.*;
 import org.junit.After;
 import org.junit.Test;
+import static org.junit.Assert.assertNotEquals;
 
 public class LoginTest {
     private final CourierClient client = new CourierClient();
@@ -24,7 +25,7 @@ public class LoginTest {
         var creds = Credentials.from(courier);
         ValidatableResponse loginResponse = client.login(creds);
         courierId = check.loggedInSuccessfully(loginResponse);
-        assert courierId != 0;
+        assertNotEquals(courierId,0);
 
         courier.setLogin("Ann");
         creds = Credentials.from(courier);

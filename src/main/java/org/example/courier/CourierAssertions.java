@@ -1,18 +1,17 @@
 package org.example.courier;
 import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
+import static org.junit.Assert.assertEquals;
 
 public class CourierAssertions {
 
     @Step("Проверка статуса ответа при валидном создании курьера")
     public void createdSuccessfully(ValidatableResponse response){
-        boolean created = response
+        assertEquals(true, response
                 .assertThat()
                 .statusCode(201)
                 .extract()
-                .path("ok")
-                ;
-        assert created;
+                .path("ok"));
     }
 
     @Step("Проверка статуса ответа и получения id при авторизации курьера")
@@ -42,13 +41,11 @@ public class CourierAssertions {
     }
     @Step("Проверка статуса ответа при создании курьера без логина")
     public void checkClientsWithoutLogin(ValidatableResponse response){
-        boolean created = response
+        assertEquals("Недостаточно данных для создания учетной записи",response
                 .assertThat()
                 .statusCode(400)
                 .extract()
-                .path("message")
-                .equals("Недостаточно данных для создания учетной записи");
-        assert created;
+                .path("message"));
     }
     @Step("Проверка статуса ответа при авторизации под несуществующим пользователем, ")
     public void checkErrorLogin(ValidatableResponse loginResponse){

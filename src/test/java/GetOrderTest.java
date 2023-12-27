@@ -9,6 +9,7 @@ import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertNotEquals;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.notNullValue;
 
@@ -30,7 +31,7 @@ public class GetOrderTest {
 
         ValidatableResponse response = client.createOrder(order);
         int trackNumber = check.createdOrderSuccessfully(response);
-        assert trackNumber != 0;
+        assertNotEquals(trackNumber,0);
         Order order1 = given()
                 .get(client.BASE_PATH + "/orders")
                 .body().as(Order.class);

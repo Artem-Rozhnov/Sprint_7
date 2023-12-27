@@ -8,6 +8,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
+import static org.junit.Assert.assertNotEquals;
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -44,7 +45,7 @@ public class OrderTest {
         ValidatableResponse response = client.createOrder(order);
 
         int trackNumber = check.createdOrderSuccessfully(response);
-        assert trackNumber != 0;
+        assertNotEquals(trackNumber,0);
 
     }
 
