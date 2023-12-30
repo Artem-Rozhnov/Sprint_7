@@ -5,13 +5,12 @@ import org.example.order.Data;
 import org.example.order.Order;
 import org.example.order.OrderAssertions;
 import org.example.order.OrderClient;
-import org.hamcrest.MatcherAssert;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static io.restassured.RestAssured.given;
-import static org.hamcrest.CoreMatchers.notNullValue;
 
 
 public class GetOrderTest {
@@ -35,6 +34,6 @@ public class GetOrderTest {
         Order order1 = given()
                 .get(client.BASE_PATH + "/orders")
                 .body().as(Order.class);
-        MatcherAssert.assertThat(order1, notNullValue());
+        assertEquals(true,order1 != null);
     }
 }

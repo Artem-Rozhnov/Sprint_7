@@ -39,7 +39,7 @@ public class CourierTest {
         var creds = Credentials.from(courier);
         ValidatableResponse loginResponse = client.login(creds);
         courierId = check.loggedInSuccessfully(loginResponse);
-        assertNotEquals(courierId, 0);
+        assertNotEquals("Неверный id курьера",courierId, 0);
     }
     @Description("Тест проводит проверку создания курьера с уже существующим логином")
     @Test
